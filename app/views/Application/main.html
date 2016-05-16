@@ -1,0 +1,29 @@
+#{extends '/main.html' /}
+#{set title: 'inicio' /}
+
+<section class="content-header">
+    <ol class="breadcrumb">
+        <li><a href="@{Application.main}"><i class="fa fa-home"></i> Inicio</a></li>
+    </ol>
+</section>
+<br/>
+
+
+<section class="content">
+    <div class="callout callout-warning">
+        <h4>¡Bienvenido!</h4>
+
+        <p>Recuérda que debes llenar tus datos para mejorar <i class="fa fa-magic"></i></p>
+    </div>
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">¡Bienvenido ${usuario}!</h3>
+        </div>
+        <div class="box-body">
+            <h2><a href="/application/showmemoramabanderas">
+                ¡Vamos a jugar! ¡Prueba el nuevo juego: Memorama de Banderas! <i class="fa fa-globe"></i>
+                <i class="fa fa-flag"></i></a>
+            </h2>
+        </div>
+    </div>
+</section>
