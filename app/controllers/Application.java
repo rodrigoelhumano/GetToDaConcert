@@ -9,8 +9,15 @@ import play.libs.WS;
 import play.mvc.Controller;
 import play.mvc.With;
 
+
 import securesocial.provider.SocialUser;
 import securesocial.provider.ProviderType;
+
+
+
+import java.util.List;
+import models.Concierto;
+
 
 /**
  *Controlador princial de la aplicación
@@ -69,5 +76,16 @@ public class Application extends Controller {
 
     static boolean isCurrentUser(Usuario user) {
         return currentUser().email.equals(user.email);
+    }
+    
+    public static void excel(){
+        List<Concierto> conciertos = Concierto.findAll();
+        render(conciertos);
+    }
+    
+    public static void generarTarjetaConcierto(Long id){
+        Concierto con = Concierto.findById(id);
+        renderArgs.put("fileName", con.getNombre() + ".xls");
+        renderE
     }
 }

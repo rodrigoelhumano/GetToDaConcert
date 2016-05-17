@@ -37,6 +37,12 @@ public class Concierto extends Model {
         this.costo = costo;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+    
+    
+
     @Override
     public String toString() {
         return String.format("%s en %s", this.nombre, this.donde);
