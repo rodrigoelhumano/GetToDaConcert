@@ -3,6 +3,7 @@ package controllers;
 import com.google.gson.JsonObject;
 
 import controllers.securesocial.SecureSocial;
+import java.util.Date;
 import models.Usuario;
 
 import play.libs.WS;
@@ -78,14 +79,25 @@ public class Application extends Controller {
         return currentUser().email.equals(user.email);
     }
     
-    public static void excel(){
-        List<Concierto> conciertos = Concierto.findAll();
-        render(conciertos);
+//    public static void excel(){
+//        List<Concierto> conciertos = Concierto.findAll();
+//        render(conciertos);
+//    }
+//    
+//    public static void generarTarjetaConcierto(Long id){
+//        Concierto con = Concierto.findById(id);
+//        renderArgs.put("fileName", con.getNombre() + ".xls");
+//        
+//    }
+//
+    public static void agregarConcierto(){
+        render();
     }
     
-    public static void generarTarjetaConcierto(Long id){
-        Concierto con = Concierto.findById(id);
-        renderArgs.put("fileName", con.getNombre() + ".xls");
-        renderE
+    public static void registrarConcierto(String nombre, String lugar, Date fecha, double costo){
+        Concierto con = new Concierto(nombre, lugar, fecha, costo);
+        con.agregarConcierto(nombre, lugar, fecha, costo);
+        con.save();
     }
+
 }
