@@ -3,6 +3,7 @@ package controllers;
 import com.google.gson.JsonObject;
 
 import controllers.securesocial.SecureSocial;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import models.Concierto;
@@ -44,7 +45,8 @@ public class Application extends Controller {
 
     public static void main(){
         SocialUser user = SecureSocial.getCurrentUser();
-        render();
+        List<Concierto> listaCon = listaConcierto();
+        render(listaCon);
     }
 
     /**
@@ -117,6 +119,12 @@ public class Application extends Controller {
         Concierto con = new Concierto(nombre, lugar, fecha, costo);
         con.agregarConcierto(nombre, lugar, fecha, costo);
         con.save();
+    }
+    
+    public static List<Concierto> listaConcierto(){
+        
+        return Concierto.findAll();
+                
     }
 
 }

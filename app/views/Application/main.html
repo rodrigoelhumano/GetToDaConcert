@@ -18,17 +18,11 @@
             <h3 class="box-title">¡Encuentra boletos de los ultimos conciertos!</h3>
         </div>
         <div class="row">
-            <div class='col-lg-4'>
-                <div>
-                    
-                </div>
-            </div>
-            <div class='col-lg-4'>
-                <p>Hi</p>
-            </div>
-            <div class='col-lg-4'>
-                <p>Hi</p>
-            </div>
+            <ul>
+                #{list listaCon, as:'concierto'}
+                <li>Nombre : ${concierto.nombre} <br> Lugar: ${concierto.lugar} <br> Fecha: ${concierto.fecha} <br> Costo: ${concierto.costo}</li>
+                #{/list}
+            </ul>
         </div>
     </div>
 </section>
