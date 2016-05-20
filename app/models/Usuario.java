@@ -1,7 +1,9 @@
 
 package models;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import play.data.validation.*;
 import play.modules.morphia.Model;
 import org.mongodb.morphia.annotations.Entity; 
@@ -31,6 +33,7 @@ public class Usuario extends Model{
     public String primerApellido;
     public String segundoApellido;
     public Date fechaNacimiento;
+    public List<Boleto> boletos;
     
     public boolean isAdmin;
 
@@ -52,6 +55,7 @@ public class Usuario extends Model{
         this.primerApellido = primerApellido;
         this.email = email;
         this.password = password;
+        boletos = new ArrayList<Boleto>();
     }
 
     @Override

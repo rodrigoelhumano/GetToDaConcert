@@ -2,6 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/home/alexrdgz/Documents/Topicos/GetToDaConcert/app/views/Application/landingPage.html</file>
+            <file>file:/home/alexrdgz/Documents/Topicos/GetToDaConcert/app/views/main.html</file>
+            <file>file:/home/alexrdgz/Documents/Topicos/GetToDaConcert/app/models/Usuario.java</file>
+            <file>file:/home/alexrdgz/Documents/Topicos/GetToDaConcert/app/controllers/Application.java</file>
+            <file>file:/home/alexrdgz/Documents/Topicos/GetToDaConcert/app/views/Application/index.html</file>
+            <file>file:/home/alexrdgz/Documents/Topicos/GetToDaConcert/app/views/concierto/agregarConcierto.html</file>
+            <file>file:/home/alexrdgz/Documents/Topicos/GetToDaConcert/conf/routes</file>
+            <file>file:/home/alexrdgz/Documents/Topicos/GetToDaConcert/app/controllers/Security.java</file>
+        </group>
     </open-files>
 </project-private>

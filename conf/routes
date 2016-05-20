@@ -6,9 +6,8 @@
 GET     /                                       Application.landingPage
 POST    /                                       Application.registrarUsuario
 GET     /main                                   Application.principal
-GET     /excel                                  Application.excel
-GET     /tarjeta                                Application.generarTarjetaConcierto
-
+GET     /agregarConcierto                       Application.agregarConcierto
+POST    /                                       Application.registrarConcierto
 
 # Secure Social module
 *       /auth                                    module:securesocial

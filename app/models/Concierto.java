@@ -25,7 +25,7 @@ public class Concierto extends Model {
     public String nombre;
     
     @Required
-    public String donde;
+    public String lugar;
     
     @Required
     public Date fecha;
@@ -33,10 +33,9 @@ public class Concierto extends Model {
     @Required
     public double costo;
 
-    public Concierto(String nombre, String donde, Date fecha, double costo) {
-        this.id=id;
+    public Concierto(String nombre, String lugar, Date fecha, double costo) {
         this.nombre = nombre;
-        this.donde = donde;
+        this.lugar = lugar;
         this.fecha = fecha;
         this.costo = costo;
     }
@@ -45,11 +44,15 @@ public class Concierto extends Model {
         return nombre;
     }
     
-    
+    public Concierto agregarConcierto(String nombre, String lugar, Date fecha, double costo){
+        Concierto con = new Concierto(nombre, lugar, fecha, costo);
+        con.save();
+        return con;
+    }
 
     @Override
     public String toString() {
-        return String.format("%s en %s", this.nombre, this.donde);
+        return String.format("%s en %s", this.nombre, this.lugar);
     }
     
     

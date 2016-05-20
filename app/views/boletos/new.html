@@ -1,0 +1,70 @@
+#{form @Application.registrarUsuario()}
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+        <form name="sentMessage" id="contactForm" novalidate>
+            <div class="row control-group">
+                <div class="form-group col-xs-12 floating-label-form-group controls">
+                    <label>Usuario</label>
+                    <input type="text" class="form-control"
+                           placeholder="Usuario" id="usuario" name="usuario" required
+                           data-validation-required-message="Please enter your name." value="${params.usuario}">
+
+                    <p class="help-block text-danger"></p>
+                </div>
+            </div>
+            <div class="row control-group">
+                <div class="form-group col-xs-12 floating-label-form-group controls">
+                    <label>Nombre</label>
+                    <input type="text" class="form-control"
+                           placeholder="Nombre" id="nombre" name="nombre" required
+                           data-validation-required-message="Porfavor introduce tu nombre."
+                           value="${params.nombre}">
+
+                    <p class="help-block text-danger"></p>
+                </div>
+            </div>
+            <div class="row control-group">
+                <div class="form-group col-xs-12 floating-label-form-group controls">
+                    <label>Primer Apellido</label>
+                    <input type="text" class="form-control"
+                           placeholder="Primer Appellido" id="primerApellido" name="primerApellido" required
+                           data-validation-required-message="Porfavor introduce tu primer apellido."
+                           value="${params.primerApellido}">
+
+                    <p class="help-block text-danger"></p>
+                </div>
+            </div>
+            <div class="row control-group">
+                <div class="form-group col-xs-12 floating-label-form-group controls">
+                    <label>Correo Electrónico</label>
+                    <input type="email" class="form-control" placeholder="Correo Electrónico" id="email"
+                           name="email"
+                           required
+                           data-validation-required-message="Porfavor introduce tu correo."
+                           value="${params.email}">
+
+                    <p class="help-block text-danger"></p>
+                </div>
+            </div>
+            <div class="row control-group">
+                <div class="form-group col-xs-12 floating-label-form-group controls">
+                    <label>Contraseña</label>
+                    <input type="password" class="form-control" placeholder="Contraseña" id="password"
+                           name="password" required
+                           data-validation-required-message="Porfavor introduce una contraseña."
+                           value="${params.password}">
+
+                    <p class="help-block text-danger"></p>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="form-group col-xs-12">
+                    <button type="submit" class="btn btn-success btn-lg">Enviar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+#{/form}

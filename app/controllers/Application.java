@@ -83,20 +83,40 @@ public class Application extends Controller {
         return currentUser().email.equals(user.email);
     }
     
-    public static void excelLista(){
-        List<Concierto> conciertos = Concierto.findAll();
-        render(conciertos);
+//    public static void excelLista(){
+//        List<Concierto> conciertos = Concierto.findAll();
+//        render(conciertos);
+//    }
+//    
+//    public static void generarTarjetaConcierto(){
+//        
+//        List<Concierto> con = Concierto.findAll();
+//    	Date date = new Date();
+//    	request.format = "xls";
+//    	String fileName= "Conciertos.xlsx";
+//    	renderArgs.put(RenderExcel.RA_ASYNC, true);
+//        renderArgs.put(RenderExcel.RA_FILENAME, "customer_list_report.xlsx");
+//        render();
+//    }
+//    public static void excel(){
+//        List<Concierto> conciertos = Concierto.findAll();
+//        render(conciertos);
+//    }
+//    
+//    public static void generarTarjetaConcierto(Long id){
+//        Concierto con = Concierto.findById(id);
+//        renderArgs.put("fileName", con.getNombre() + ".xls");
+//        
+//    }
+//
+    public static void agregarConcierto(){
+        render();
     }
     
-    public static void generarTarjetaConcierto(){
-        
-        List<Concierto> con = Concierto.findAll();
-    	Date date = new Date();
-    	request.format = "xls";
-    	String fileName= "Conciertos.xlsx";
-    	renderArgs.put(RenderExcel.RA_ASYNC, true);
-        renderArgs.put(RenderExcel.RA_FILENAME, "customer_list_report.xlsx");
-        render();
-        
+    public static void registrarConcierto(String nombre, String lugar, Date fecha, double costo){
+        Concierto con = new Concierto(nombre, lugar, fecha, costo);
+        con.agregarConcierto(nombre, lugar, fecha, costo);
+        con.save();
     }
+
 }
