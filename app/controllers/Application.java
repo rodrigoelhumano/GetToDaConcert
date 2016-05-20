@@ -3,22 +3,21 @@ package controllers;
 import com.google.gson.JsonObject;
 
 import controllers.securesocial.SecureSocial;
+import java.util.Date;
+import java.util.List;
+import models.Concierto;
 import models.Usuario;
+import play.Logger;
 
 import play.libs.WS;
+import play.modules.excel.RenderExcel;
 import play.mvc.Controller;
 import play.mvc.With;
-
-
-import securesocial.provider.SocialUser;
 import securesocial.provider.ProviderType;
 
 
 
-import java.util.List;
-import models.Concierto;
-
-
+import securesocial.provider.SocialUser;
 /**
  *Controlador princial de la aplicación
  *
@@ -27,6 +26,8 @@ import models.Concierto;
 */
 //@With(Secure.class)
 //@With(SecureSocial.class)
+
+//@With(ExcelControllerHelper.class)
 public class Application extends Controller {
 
     /**
@@ -34,6 +35,10 @@ public class Application extends Controller {
      *
      */
     public static void landingPage() {
+        render();
+    }
+    
+    public static void excel(){
         render();
     }
 
@@ -78,14 +83,20 @@ public class Application extends Controller {
         return currentUser().email.equals(user.email);
     }
     
-    public static void excel(){
+    public static void excelLista(){
         List<Concierto> conciertos = Concierto.findAll();
         render(conciertos);
     }
     
-    public static void generarTarjetaConcierto(Long id){
-        Concierto con = Concierto.findById(id);
-        renderArgs.put("fileName", con.getNombre() + ".xls");
-        renderE
+    public static void generarTarjetaConcierto(){
+        
+        List<Concierto> con = Concierto.findAll();
+    	Date date = new Date();
+    	request.format = "xls";
+    	String fileName= "Conciertos.xlsx";
+    	renderArgs.put(RenderExcel.RA_ASYNC, true);
+        renderArgs.put(RenderExcel.RA_FILENAME, "customer_list_report.xlsx");
+        render();
+        
     }
 }

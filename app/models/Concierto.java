@@ -19,6 +19,9 @@ import org.mongodb.morphia.annotations.Entity;
 public class Concierto extends Model {
     
     @Required
+    public int id;
+    
+    @Required
     public String nombre;
     
     @Required
@@ -31,6 +34,7 @@ public class Concierto extends Model {
     public double costo;
 
     public Concierto(String nombre, String donde, Date fecha, double costo) {
+        this.id=id;
         this.nombre = nombre;
         this.donde = donde;
         this.fecha = fecha;
