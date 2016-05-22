@@ -6,6 +6,8 @@
 GET     /                                       Application.landingPage
 POST    /                                       Application.registrarUsuario
 GET     /main                                   Application.principal
+GET     /generar                                Application.generar 
+POST    /                                       Application.registrarConcierto
 
 # Secure Social module
 *       /auth                                    module:securesocial
