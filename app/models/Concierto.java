@@ -7,6 +7,7 @@
 package models;
 
 import java.util.Date;
+import java.util.List;
 import play.data.validation.*;
 import play.modules.morphia.Model;
 import org.mongodb.morphia.annotations.Entity; 
@@ -53,6 +54,12 @@ public class Concierto extends Model {
     @Override
     public String toString() {
         return String.format("%s en %s ", this.nombre, this.lugar);
+    }
+    
+    public static List<Concierto> listaConcierto(){
+        
+        return Concierto.findAll();
+                
     }
     
     

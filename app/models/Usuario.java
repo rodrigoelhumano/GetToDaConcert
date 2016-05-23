@@ -91,4 +91,5 @@ public class Usuario extends Model{
         return String.format("%s %s", this.nombre,this.primerApellido);
     }
     
+    
 }

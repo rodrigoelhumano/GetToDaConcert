@@ -1,9 +1,11 @@
 package controllers;
 
 import com.google.gson.JsonObject;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Paragraph;
+import com.lowagie.text.pdf.PdfTable;
 
 import controllers.securesocial.SecureSocial;
 import java.io.File;
@@ -40,7 +42,9 @@ import play.mvc.Finally;
 
 import play.libs.WS;
 
+import com.itextpdf.text.*;
 import com.lowagie.text.pdf.PdfWriter;
+import models.Boleto;
 import securesocial.provider.SocialUser;
 /**
  *Controlador princial de la aplicación
@@ -71,7 +75,7 @@ public class Application extends Controller {
 
     public static void main(){
         SocialUser user = SecureSocial.getCurrentUser();
-        List<Concierto> listaCon = listaConcierto();
+        List<Concierto> listaCon = Concierto.listaConcierto();
         render(listaCon);
     }
 
@@ -98,7 +102,7 @@ public class Application extends Controller {
      * @return 
      */
 
-    static Usuario currentUser() {
+    public static Usuario currentUser() {
         SocialUser currentUser = SecureSocial.getCurrentUser();
         return Usuario.find("email", currentUser.email).first();
     }
@@ -147,34 +151,37 @@ public class Application extends Controller {
         con.save();
     }
     
-    public static List<Concierto> listaConcierto(){
-        
-        return Concierto.findAll();
-                
-    }
     
-    final static String  html = "generar.html";
+    
         
-    public static void generar() throws FileNotFoundException, DocumentException{
+    public static void generar(Long id) throws FileNotFoundException, DocumentException{
         
-        List<Concierto> listaCon = Concierto.findAll();
-        
+       try{                 
+       // System.out.println("Usuario"+currentUser());
+        //Boleto boleto = Boleto.find("byNombre",);
         FileOutputStream file = new FileOutputStream("/home/alexrdgz/Documents/PDFS/prueba.pdf");
         //File file = new File("/home/alexrdgz/Documents/PDFS/prueba.pdf");
         //InputStream file2 = new FileInputStream("/home/alexrdgz/Documents/PDFS/prueba2.pdf");
-        Document document = new Document();
-   
-        PdfWriter.getInstance(document, file);
-        //PDF.writePDF(file, document);
-        document.open();
-        for (Concierto concierto : listaCon) {
-        document.add(new Paragraph("concierto:"+concierto));
-            
+       // Document documento = new Document();
+        com.itextpdf.text.Document documento = new com.itextpdf.text.Document();
+        com.itextpdf.text.pdf.PdfWriter.getInstance(documento, file);
+        documento.open();
+        documento.add(new com.itextpdf.text.Paragraph("Lista de conciertos en GetToDaConcert",FontFactory.getFont("arial",22,Font.ITALIC,BaseColor.BLUE)));
+        documento.add(new com.itextpdf.text.Paragraph(" "));
+        List<Concierto> concierto = Concierto.listaConcierto();
+        PdfPTable tabla = new PdfPTable(concierto.size());
+        for (Concierto concierto1 : concierto) {
+            tabla.addCell(""+concierto1);
         }
-        document.setHtmlStyleClass(html);
-        document.close();
-        render();
+        documento.add(tabla);
+            
         
+        documento.close();
+        render();
+       }catch (Exception e){
+           e.printStackTrace();
+       }
+       
     }
     
     public static void pdf() throws FileNotFoundException, DocumentException{
