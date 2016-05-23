@@ -20,7 +20,11 @@
         <div class="row">
             <ul>
                 #{list listaCon, as:'concierto'}
-                <li>Nombre : ${concierto.nombre} <br> Lugar: ${concierto.lugar} <br> Fecha: ${concierto.fecha} <br> Costo: ${concierto.costo}</li>
+                <li>Nombre : ${concierto.nombre} <br> Lugar: ${concierto.lugar} <br> Fecha: ${concierto.fecha} <br> Costo: ${concierto.costo} </li>
+                    <p>
+                        <input type="submit" value="Comprar!" />
+                    </p>
+                    <hr>
                 #{/list}
             </ul>
         </div>

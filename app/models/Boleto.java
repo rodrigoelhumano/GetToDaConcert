@@ -17,9 +17,19 @@ public class Boleto extends Model{
     public Concierto concert;
     @Reference
     public Usuario usuario;
+
+    public Boleto(Concierto concert, Usuario usuario) {
+        this.concert = concert;
+        this.usuario = usuario;
+    }
+       
+    public Boleto() {
     
+    }
     
-   
-    
-    
+    public Boleto addBoleto(Concierto concert, Usuario usuario){
+        
+        this.save();
+        return this;
+    }
 }

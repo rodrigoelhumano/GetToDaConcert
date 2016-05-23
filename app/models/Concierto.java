@@ -45,14 +45,13 @@ public class Concierto extends Model {
     }
     
     public Concierto agregarConcierto(String nombre, String lugar, Date fecha, double costo){
-        Concierto con = new Concierto(nombre, lugar, fecha, costo);
-        con.save();
-        return con;
+        this.save();
+        return this;
     }
 
     @Override
     public String toString() {
-        return String.format("%s en %s el %", this.nombre, this.lugar);
+        return String.format("%s en %s ", this.nombre, this.lugar);
     }
     
     

@@ -20,6 +20,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import jj.play.org.eclipse.mylyn.wikitext.core.parser.MarkupParser;
 import jj.play.org.eclipse.mylyn.wikitext.textile.core.TextileLanguage;
+import models.Boleto;
 import models.Concierto;
 import models.Usuario;
 import org.apache.commons.lang.time.DurationFormatUtils;
@@ -147,6 +148,12 @@ public class Application extends Controller {
         con.save();
     }
     
+    public static void comprarBoleto(Concierto concert, Usuario usuario){
+        Boleto boleto = new Boleto(concert, usuario);
+        boleto.addBoleto(concert, usuario);
+        boleto.save();
+    }
+    
     public static List<Concierto> listaConcierto(){
         
         return Concierto.findAll();
@@ -181,6 +188,7 @@ public class Application extends Controller {
                 
         
     }
+    
     
     
 }
