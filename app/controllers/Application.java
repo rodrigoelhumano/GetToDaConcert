@@ -40,7 +40,7 @@ import play.mvc.Finally;
 
 import play.libs.WS;
 
-
+import com.lowagie.text.pdf.PdfWriter;
 import securesocial.provider.SocialUser;
 /**
  *Controlador princial de la aplicación
@@ -153,33 +153,33 @@ public class Application extends Controller {
                 
     }
     
-    
+    final static String  html = "generar.html";
+        
     public static void generar() throws FileNotFoundException, DocumentException{
+        
+        List<Concierto> listaCon = Concierto.findAll();
+        
         FileOutputStream file = new FileOutputStream("/home/alexrdgz/Documents/PDFS/prueba.pdf");
         //File file = new File("/home/alexrdgz/Documents/PDFS/prueba.pdf");
         //InputStream file2 = new FileInputStream("/home/alexrdgz/Documents/PDFS/prueba2.pdf");
         Document document = new Document();
-        
-        PDF.writePDF(file, document);
+   
+        PdfWriter.getInstance(document, file);
+        //PDF.writePDF(file, document);
         document.open();
-        document.add(new Paragraph("Hola mundo"));
+        for (Concierto concierto : listaCon) {
+        document.add(new Paragraph("concierto:"+concierto));
+            
+        }
+        document.setHtmlStyleClass(html);
         document.close();
+        render();
+        
+    }
+    
+    public static void pdf() throws FileNotFoundException, DocumentException{
+        
         //renderBinary(file2);
-        
-        
-        
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-        
     }
     
     

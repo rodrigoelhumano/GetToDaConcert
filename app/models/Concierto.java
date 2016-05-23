@@ -52,7 +52,7 @@ public class Concierto extends Model {
 
     @Override
     public String toString() {
-        return String.format("%s en %s el %", this.nombre, this.lugar);
+        return String.format("%s en %s ", this.nombre, this.lugar);
     }
     
     
