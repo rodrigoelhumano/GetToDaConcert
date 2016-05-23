@@ -1,10 +1,5 @@
-
+#{extends '/main.html' /}
+#{set title: 'Boleto' /}
 
 <h1>Boleto</h1>
-    <div class="row">
-        <ul>
-            #{list listaCon, as:'concierto'}
-                <li>Nombre : ${concierto.nombre} <br> Lugar: ${concierto.lugar} <br> Fecha: ${concierto.fecha} <br> Costo: ${concierto.costo}</li>
-            #{/list}
-        </ul>
-    </div>
+    
